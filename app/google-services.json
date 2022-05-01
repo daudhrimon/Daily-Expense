@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "485007789337",
+    "project_id": "dailyexpense-8f079",
+    "storage_bucket": "dailyexpense-8f079.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485007789337:android:5629595646e314a3868988",
+        "android_client_info": {
+          "package_name": "com.daud.dailyexpensefire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485007789337-es0hp5bd1pqia07b2h0q62l5ob5p26uk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKCbKrWLqThOUTr-fhpbhgO-wF3ANVuYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485007789337-es0hp5bd1pqia07b2h0q62l5ob5p26uk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

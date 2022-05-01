@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DailyExpense</string>
+    <string name="otpSendHdr">OTP Verification</string>
+    <string name="otpSendMsg">We will send OTP to your entered Number</string>
+    <string name="otpVerifyHdr">Verify OTP</string>
+    <string name="otpVerifyMsg">Enter Your Received OTP Here</string>
+</resources>

@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.1605" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/activity_auth.xml" value="0.15185185185185185" />
-        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/activity_main.xml" value="0.15185185185185185" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/drawer_menu.xml" value="0.25" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/drawer_menu_header.xml" value="0.25" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/fragment_otp_send.xml" value="0.2" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/fragment_otp_verify.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/name_input_lay.xml" value="0.25" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/single_edittext_updater.xml" value="0.25" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/tool_bar.xml" value="0.25" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/menu/menu.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/menu/menu_navbtm.xml" value="0.25" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/menu/menu_navdr.xml" value="0.25" />
       </map>
     </option>
   </component>

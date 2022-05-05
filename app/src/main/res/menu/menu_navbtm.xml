@@ -4,12 +4,12 @@
     tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/dash"
+        android:id="@+id/dashBtm"
         android:title="Dash Board"
         android:icon="@drawable/ic_baseline_dashboard_24"/>
 
     <item
-        android:id="@+id/addex"
+        android:id="@+id/addexBtm"
         android:title="Add Expense"
         android:icon="@drawable/ic_baseline_add_chart_24"/>
 

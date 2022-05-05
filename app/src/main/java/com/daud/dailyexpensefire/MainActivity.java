@@ -36,10 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        drawerLay = findViewById(R.id.drawerLay);
-        navDr = findViewById(R.id.navDr);
-        navBtm = findViewById(R.id.navBtm);
-        toggle = findViewById(R.id.toogle);
+        initial();
 
         toggle.setOnClickListener(view -> {
             drawerLay.openDrawer(GravityCompat.START);
@@ -88,5 +85,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void initial() {
+        drawerLay = findViewById(R.id.drawerLay);
+        navDr = findViewById(R.id.navDr);
+        navBtm = findViewById(R.id.navBtm);
+        toggle = findViewById(R.id.toogle);
     }
 }

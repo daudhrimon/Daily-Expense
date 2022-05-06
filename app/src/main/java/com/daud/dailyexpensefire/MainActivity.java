@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         initial();
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashBoardFrag()).commit();
+
         toggle.setOnClickListener(view -> {
             drawerLay.openDrawer(GravityCompat.START);
         });
@@ -45,25 +47,9 @@ public class MainActivity extends AppCompatActivity {
         navDr.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.eName:
-                        Toast.makeText(MainActivity.this, "Edit Name", Toast.LENGTH_SHORT).show();
-                        break;
 
-                    case R.id.sOut:
-                        Toast.makeText(MainActivity.this, "Sign Out", Toast.LENGTH_SHORT).show();
-                        break;
+                drawerItemSelect(item);
 
-                    case R.id.dash:
-                        Toast.makeText(MainActivity.this, "Dash Board", Toast.LENGTH_SHORT).show();
-                        break;
-
-                    case R.id.addex:
-                        Toast.makeText(MainActivity.this, "Add Expense", Toast.LENGTH_SHORT).show();
-                        break;
-
-                        default:break;
-                }
                 return true;
             }
         });
@@ -71,20 +57,54 @@ public class MainActivity extends AppCompatActivity {
         navBtm.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.dashBtm:
-                        Toast.makeText(MainActivity.this, "Dash Board", Toast.LENGTH_SHORT).show();
-                        break;
 
-                    case R.id.addexBtm:
-                        Toast.makeText(MainActivity.this, "Add Expense", Toast.LENGTH_SHORT).show();
-                        break;
+                bottomNavItemSelect(item);
 
-                        default:break;
-                }
                 return true;
             }
         });
+    }
+
+    private void drawerItemSelect(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.eName:
+                Toast.makeText(MainActivity.this, "Edit Name", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.sOut:
+                Toast.makeText(MainActivity.this, "Sign Out", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.dash:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashBoardFrag()).commit();
+                drawerLay.closeDrawer(GravityCompat.START);
+                navBtm.setSelectedItemId(R.id.dashBtm);
+                break;
+
+            case R.id.addex:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new AddExpenseFrag()).commit();
+                drawerLay.closeDrawer(GravityCompat.START);
+                navBtm.setSelectedItemId(R.id.addexBtm);
+                break;
+
+            default:break;
+        }
+    }
+
+    private void bottomNavItemSelect(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.dashBtm:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashBoardFrag()).commit();
+                break;
+
+            case R.id.addexBtm:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new AddExpenseFrag()).commit();
+                break;
+
+            default:break;
+        }
     }
 
     private void initial() {

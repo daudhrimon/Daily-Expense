@@ -4,4 +4,6 @@
     <string name="otpSendMsg">We will send OTP to your entered Number</string>
     <string name="otpVerifyHdr">Verify OTP</string>
     <string name="otpVerifyMsg">Enter Your Received OTP Here</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -25,12 +25,12 @@
 
                 <item
                     android:id="@+id/dash"
-                    android:title="Dash Board"
+                    android:title="Dashboard"
                     android:icon="@drawable/ic_baseline_dashboard_24"/>
 
                 <item
-                    android:id="@+id/addex"
-                    android:title="Add Expense"
+                    android:id="@+id/expn"
+                    android:title="Expense"
                     android:icon="@drawable/ic_baseline_add_chart_24"/>
 
             </menu>

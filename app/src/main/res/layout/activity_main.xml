@@ -26,13 +26,13 @@
                 <ImageButton
                     android:id="@+id/toogle"
                     style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="50dp"
+                    android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="6dp"
                     android:src="@drawable/ic_baseline_menu_24"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <androidx.appcompat.widget.SearchView
                     android:layout_width="match_parent"
@@ -55,6 +55,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/top"
             android:layout_above="@+id/navBtm"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addEx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="70dp"
+            android:backgroundTint="@color/btnBg"
+            android:src="@drawable/add"
+            app:maxImageSize="65dp"
+            android:onClick="addExOnClick"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navBtm"

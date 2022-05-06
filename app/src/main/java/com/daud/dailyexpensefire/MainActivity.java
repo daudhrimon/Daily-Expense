@@ -1,35 +1,28 @@
 package com.daud.dailyexpensefire;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLay;
     private NavigationView navDr;
     private BottomNavigationView navBtm;
     private ImageButton toggle;
+    private FloatingActionButton addEx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         initial();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashBoardFrag()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashboardFrag()).commit();
 
         toggle.setOnClickListener(view -> {
             drawerLay.openDrawer(GravityCompat.START);
@@ -65,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void addExOnClick(View view) {
+        startActivity(new Intent(MainActivity.this,AddExpenseActivity.class));
+    }
+
     private void drawerItemSelect(MenuItem item) {
 
         switch (item.getItemId()){
@@ -77,15 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.dash:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashBoardFrag()).commit();
-                drawerLay.closeDrawer(GravityCompat.START);
                 navBtm.setSelectedItemId(R.id.dashBtm);
+                drawerLay.closeDrawer(GravityCompat.START);
                 break;
 
-            case R.id.addex:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new AddExpenseFrag()).commit();
+            case R.id.expn:
+                navBtm.setSelectedItemId(R.id.expnBtm);
                 drawerLay.closeDrawer(GravityCompat.START);
-                navBtm.setSelectedItemId(R.id.addexBtm);
                 break;
 
             default:break;
@@ -96,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.dashBtm:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashBoardFrag()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashboardFrag()).commit();
                 break;
 
-            case R.id.addexBtm:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new AddExpenseFrag()).commit();
+            case R.id.expnBtm:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new ExpenseFrag()).commit();
                 break;
 
             default:break;
@@ -112,5 +107,7 @@ public class MainActivity extends AppCompatActivity {
         navDr = findViewById(R.id.navDr);
         navBtm = findViewById(R.id.navBtm);
         toggle = findViewById(R.id.toogle);
+        addEx = findViewById(R.id.addEx);
     }
+
 }

@@ -163,7 +163,6 @@ public class OtpVerifyFragment extends Fragment {
         TextView headTv = view.findViewById(R.id.headTv);
         TextInputEditText nameEt = view.findViewById(R.id.nameEt);
         MaterialButton saveBtn = view.findViewById(R.id.saveBtn);
-        ProgressBar nameProg = view.findViewById(R.id.nameProg);
         dialog.setView(view);
 
         nameEt.requestFocus();
@@ -177,42 +176,21 @@ public class OtpVerifyFragment extends Fragment {
             }
 
             if (Phone != null && !Phone.isEmpty()) {
-                headTv.setText("Please Wait...");
-                nameEt.setVisibility(View.GONE);
-                saveBtn.setVisibility(View.GONE);
-                nameProg.setVisibility(View.VISIBLE);
 
-                DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference(Phone);
-                dataRef.child("Name").setValue(nameEt.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            nameProg.setVisibility(View.GONE);
-                            Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+                AuthActivity.editor.putInt("STATE", 1);
+                AuthActivity.editor.putString("Name",nameEt.getText().toString());
+                AuthActivity.editor.putString("Phone",Phone);
+                AuthActivity.editor.commit();
 
-                            AuthActivity.editor.putInt("STATE", 1);
-                            AuthActivity.editor.putString("Phone",Phone);
-                            AuthActivity.editor.commit();
+                dialog.dismiss();
 
-                            dialog.dismiss();
+                startActivity(new Intent(getContext(), MainActivity.class));
+                getActivity().finish();
 
-                            startActivity(new Intent(getContext(), MainActivity.class));
-                            getActivity().finish();
-
-                        }else{
-                            nameProg.setVisibility(View.GONE);
-                            headTv.setText("Write Your Name Here");
-                            nameEt.setVisibility(View.VISIBLE);
-                            saveBtn.setVisibility(View.VISIBLE);
-                            Toast.makeText(getContext(),task.getException().getMessage().toString(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
             }else{
                 Toast.makeText(getContext(), "Phone Number Error", Toast.LENGTH_SHORT).show();
             }
         });
-
         dialog.show();
     }
 
@@ -304,6 +282,7 @@ public class OtpVerifyFragment extends Fragment {
         resendBtn = view.findViewById(R.id.resendBtn);
         phoneTv = view.findViewById(R.id.phoneTv);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
         verifyProg = view.findViewById(R.id.verifyProg);
         Phone = AuthActivity.sharedPreferences.getString("Phone", "");
     }

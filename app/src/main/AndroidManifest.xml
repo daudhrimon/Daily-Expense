@@ -3,6 +3,9 @@
     package="com.daud.dailyexpensefire">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -10,9 +13,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DailyExpense">
+        android:theme="@style/Theme.DailyExpense"
+        android:name=".DiskPersistence">
         <activity
-            android:name=".AddExpenseActivity"
+            android:name=".AddExActivity"
             android:exported="false" />
         <activity
             android:name=".AuthActivity"

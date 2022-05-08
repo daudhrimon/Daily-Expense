@@ -322,7 +322,7 @@ public class AddExActivity extends AppCompatActivity {
                 imageUrl);
         DatabaseReference dataRef = MainActivity.databaseRef.child(key);
         dataRef.setValue(exModel);
-        Toast.makeText(this, "Expense Added", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -368,15 +368,6 @@ public class AddExActivity extends AppCompatActivity {
         exImageLay = findViewById(R.id.exImageLay);
         String Phone = MainActivity.sharedPreferences.getString("Phone", "");
         storageReference = FirebaseStorage.getInstance().getReference(Phone);
-        //Key = AuthActivity.sharedPreferences.getString("Key","");
         addExProg = findViewById(R.id.addExProg);
     }
-
-    /*@Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (TASK==0){
-            MainActivity.databaseRef.child(Key).removeValue();
-        }
-    }*/
 }

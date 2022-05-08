@@ -39,6 +39,7 @@ import androidx.core.view.GravityCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
@@ -189,14 +190,14 @@ public class AddExActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(AddExActivity.this, new String[]{Manifest.permission.CAMERA}, 2);
         }else{
             if (checkInternet()){
-                imageSourseSelectorDialog();
+                imageSourceSelectorDialog();
             }else{
                 Toast.makeText(this, "Check Internet Connection First", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void imageSourseSelectorDialog() {
+    private void imageSourceSelectorDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         View view1 = LayoutInflater.from(this).inflate(R.layout.image_source_selector, null);
         alertDialog.setView(view1);

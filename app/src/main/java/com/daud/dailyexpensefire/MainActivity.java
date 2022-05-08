@@ -3,6 +3,7 @@ package com.daud.dailyexpensefire;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -35,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLay;
     private NavigationView navDr;
     private BottomNavigationView navBtm;
-    private TextView nameTv,phoneTv;
+    private TextView nameTv,phoneTv,appName;
     private ImageButton toggle;
     private FloatingActionButton addEx;
     public static DatabaseReference databaseRef;
     private String Name,Phone;
+    public static SearchView search;
     public static SharedPreferences sharedPreferences;
     public static SharedPreferences.Editor editor;
 
@@ -109,6 +111,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void bottomNavItemSelect(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.dashBtm:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLay,new DashboardFrag()).commit();
+                search.setVisibility(View.GONE);
+                appName.setVisibility(View.VISIBLE);
+                break;
+
+            case R.id.expnBtm:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLay,new ExpenseFrag()).commit();
+                appName.setVisibility(View.GONE);
+                search.setVisibility(View.VISIBLE);
+                break;
+
+            default:break;
+        }
+    }
+
     private void editNameAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         View view = LayoutInflater.from(this).inflate(R.layout.name_input_lay,null);
@@ -158,21 +181,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void bottomNavItemSelect(MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.dashBtm:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new DashboardFrag()).commit();
-                break;
-
-            case R.id.expnBtm:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLay,new ExpenseFrag()).commit();
-                break;
-
-            default:break;
-        }
-    }
-
     @Override
     public void onBackPressed() {
 
@@ -202,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
         navBtm = findViewById(R.id.navBtm);
         toggle = findViewById(R.id.toogle);
         addEx = findViewById(R.id.addEx);
+        search = findViewById(R.id.search);
+        appName = findViewById(R.id.appName);
         // get user name and phone from SharedPreference
         sharedPreferences = getSharedPreferences("MySp", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

@@ -149,7 +149,7 @@ public class AddExActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month+1;
-                        String Date = year+"/"+month+"/"+day;
+                        String Date = year+"-"+month+"-"+day;
                         exDate.setText(Date);
                     }
                 },year,month,day);

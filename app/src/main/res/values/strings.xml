@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DailyExpense</string>
+    <string name="app_name">Daily Expense</string>
     <string name="otpSendHdr">OTP Verification</string>
     <string name="otpSendMsg">We will send OTP to your entered Number</string>
     <string name="otpVerifyHdr">Verify OTP</string>

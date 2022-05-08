@@ -3,6 +3,7 @@ package com.daud.dailyexpensefire;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +23,6 @@ import java.util.List;
 
 public class ExpenseFrag extends Fragment {
     private RecyclerView recycler;
-    private LinearLayout eBox;
     private ExpenseAdapter adapter;
     private List<ExpenseModel> list;
 
@@ -35,7 +35,33 @@ public class ExpenseFrag extends Fragment {
 
         getExpense();
 
+        MainActivity.search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) { return false; }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchMethod(newText);
+                return true;
+            }
+        });
+
         return view;
+    }
+
+    private void searchMethod(String newText) {
+        List<ExpenseModel> searchList = new ArrayList<>();
+        for (int i = 0; i<list.size(); i++){
+            if (list.get(i).getType().toLowerCase().contains(newText) ||
+                    list.get(i).getDate().contains(newText) ||
+                    list.get(i).getTime().contains(newText) ||
+                    String.valueOf(list.get(i).getAmount()).contains(newText)){
+
+                searchList.add(list.get(i));
+            }
+        }
+        adapter = new ExpenseAdapter(getContext(),searchList);
+        recycler.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     private void getExpense() {
@@ -45,8 +71,6 @@ public class ExpenseFrag extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
               if (snapshot.exists()){
                   list.clear();
-                  eBox.setVisibility(View.GONE);
-                  recycler.setVisibility(View.VISIBLE);
                   for(DataSnapshot dataSnap : snapshot.getChildren()){
                       if (dataSnap.exists()){
                           ExpenseModel expModel = dataSnap.getValue(ExpenseModel.class);
@@ -56,9 +80,6 @@ public class ExpenseFrag extends Fragment {
                   adapter = new ExpenseAdapter(getContext(),list);
                   recycler.setAdapter(adapter);
                   adapter.notifyDataSetChanged();
-              } else {
-                  recycler.setVisibility(View.GONE);
-                  eBox.setVisibility(View.VISIBLE);
               }
             }
 
@@ -69,7 +90,6 @@ public class ExpenseFrag extends Fragment {
 
     private void initial(View view) {
         recycler = view.findViewById(R.id.recycler);
-        eBox = view.findViewById(R.id.eBox);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         list = new ArrayList<>();
     }

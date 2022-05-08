@@ -55,11 +55,13 @@ public class DashboardFrag extends Fragment {
     }
 
     private void getAmount() {
-        if (fromDateEt.getText().toString().isEmpty()
-                || toDateEt.getText().toString().isEmpty()){
-            getAllAmount();
-        }else {
+        if (!fromDateEt.getText().toString().isEmpty()
+                && !toDateEt.getText().toString().isEmpty()){
+
             getAmountByDate();
+
+        }else {
+            getAllAmount();
         }
     }
 
@@ -114,7 +116,7 @@ public class DashboardFrag extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 month = month+1;
-                                String Date = year+"/"+month+"/"+day;
+                                String Date = year+"-"+month+"-"+day;
                                 if (task==0){
                                     fromDateEt.setText(Date);
                                     getAmount();

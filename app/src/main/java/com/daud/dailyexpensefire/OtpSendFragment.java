@@ -148,6 +148,5 @@ public class OtpSendFragment extends Fragment {
         sendBtn = view.findViewById(R.id.sendBtn);
         firebaseAuth = FirebaseAuth.getInstance();
         sendProg = view.findViewById(R.id.sendProg);
-        firebaseAuth.getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
     }
 }

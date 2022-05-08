@@ -71,6 +71,8 @@ public class ExpenseFrag extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
               if (snapshot.exists()){
                   list.clear();
+                  recycler.setVisibility(View.VISIBLE);
+
                   for(DataSnapshot dataSnap : snapshot.getChildren()){
                       if (dataSnap.exists()){
                           ExpenseModel expModel = dataSnap.getValue(ExpenseModel.class);
@@ -80,6 +82,8 @@ public class ExpenseFrag extends Fragment {
                   adapter = new ExpenseAdapter(getContext(),list);
                   recycler.setAdapter(adapter);
                   adapter.notifyDataSetChanged();
+              }else {
+                  recycler.setVisibility(View.GONE);
               }
             }
 

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +32,7 @@ import java.util.List;
 public class DashboardFrag extends Fragment {
     private TextInputEditText fromDateEt,toDateEt;
     private TextView totalExTv;
+    private Button expenseBtn;
     private int SUM;
     private List<ExpenseModel> list;
 
@@ -41,7 +43,7 @@ public class DashboardFrag extends Fragment {
 
         initial(view);
 
-        getAmount();
+        getAllAmount();
 
         fromDateEt.setOnClickListener(view1 -> {
             pickDate(0);
@@ -51,18 +53,11 @@ public class DashboardFrag extends Fragment {
             pickDate(1);
         });
 
-        return view;
-    }
-
-    private void getAmount() {
-        if (!fromDateEt.getText().toString().isEmpty()
-                && !toDateEt.getText().toString().isEmpty()){
-
+        expenseBtn.setOnClickListener(view1 -> {
             getAmountByDate();
+        });
 
-        }else {
-            getAllAmount();
-        }
+        return view;
     }
 
     private void getAllAmount() {
@@ -84,24 +79,31 @@ public class DashboardFrag extends Fragment {
     }
 
     private void  getAmountByDate() {
-        MainActivity.databaseRef.orderByChild("date").startAt(fromDateEt.getText().toString())
-                .endAt(toDateEt.getText().toString()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-               if (snapshot.exists()){
-                   SUM = 0;
-                   for (DataSnapshot dataSnap : snapshot.getChildren()){
-                       if (dataSnap.exists()){
-                           ExpenseModel dateAmount = dataSnap.getValue(ExpenseModel.class);
-                           SUM += dateAmount.getAmount();
-                       }
-                   }
-                   totalExTv.setText(String.valueOf(SUM));
-               }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
-        });
+        if (fromDateEt.getText().toString().isEmpty() || toDateEt.getText().toString().isEmpty()) {
+
+            Toast.makeText(getContext(), "select From Date & To Date", Toast.LENGTH_SHORT).show();
+
+        }else{
+
+            MainActivity.databaseRef.orderByChild("date").startAt(fromDateEt.getText().toString())
+                    .endAt(toDateEt.getText().toString()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()){
+                        SUM = 0;
+                        for (DataSnapshot dataSnap : snapshot.getChildren()){
+                            if (dataSnap.exists()){
+                                ExpenseModel dateAmount = dataSnap.getValue(ExpenseModel.class);
+                                SUM += dateAmount.getAmount();
+                            }
+                        }
+                        totalExTv.setText(String.valueOf(SUM));
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) { }
+            });
+        }
     }
 
     private void pickDate(int task) {
@@ -116,13 +118,11 @@ public class DashboardFrag extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 month = month+1;
-                                String Date = year+"-"+month+"-"+day;
+                                String Date = year+" / "+month+" / "+day;
                                 if (task==0){
                                     fromDateEt.setText(Date);
-                                    getAmount();
                                 }else {
                                     toDateEt.setText(Date);
-                                    getAmount();
                                 }
 
                             }
@@ -142,6 +142,7 @@ public class DashboardFrag extends Fragment {
         fromDateEt = view.findViewById(R.id.fromDateEt);
         toDateEt = view.findViewById(R.id.toDateEt);
         totalExTv = view.findViewById(R.id.totalExTv);
+        expenseBtn = view.findViewById(R.id.expenseBtn);
         list = new ArrayList<>();
     }
 }

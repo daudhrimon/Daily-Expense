@@ -12,12 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Year / Month / Day"
-        android:textColor="@color/txtClr"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="7dp"
+        android:text="Year / Month / Day"
+        android:textColor="@color/txtClr" />
 
     <LinearLayout
+        android:id="@+id/dateLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
@@ -31,7 +32,7 @@
             android:layout_weight="0.5"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_margin="5dp"
+            android:layout_margin="7dp"
             android:hint="From Date">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -51,7 +52,7 @@
             android:layout_weight="0.5"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_margin="5dp"
+            android:layout_margin="7dp"
             android:hint="To Date">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -68,10 +69,23 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/expenseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateLay"
+        android:layout_marginTop="15dp"
+        android:text="Expense"
+        android:textSize="16dp"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/btnBg"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/txtClr"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/text"
+        android:layout_below="@id/dateLay"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -87,15 +101,15 @@
             android:layout_margin="15dp"
             android:text="Total Expense"
             android:textColor="@color/txtClr"
-            android:textSize="30dp"
-            android:textStyle="bold"/>
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/totalExTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/taka"
             android:layout_margin="5dp"
+            android:drawableEnd="@drawable/taka"
             android:drawablePadding="10dp"
             android:text="00"
             android:textColor="@color/txtClr"

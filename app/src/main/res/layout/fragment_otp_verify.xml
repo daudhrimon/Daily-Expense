@@ -28,6 +28,7 @@
         android:layout_marginHorizontal="30dp"
         android:text="@string/otpVerifyHdr"
         android:textAlignment="center"
+        android:textColor="@color/txtClr"
         android:textSize="30dp"
         android:textStyle="bold" />
 
@@ -41,6 +42,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="12dp"
         android:textAlignment="center"
+        android:textColor="@color/txtClr"
         android:textSize="18dp" />
 
     <TextView
@@ -51,7 +53,8 @@
         android:layout_marginHorizontal="30dp"
         android:text="@string/otpVerifyMsg"
         android:textAlignment="center"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:textColor="@color/txtClr"/>
 
     <LinearLayout
         android:id="@+id/otpEt"
@@ -198,7 +201,8 @@
             android:paddingEnd="5dp"
             android:text="Didn't get the OTP ?"
             android:textSize="16dp"
-            android:textAlignment="textEnd"/>
+            android:textAlignment="textEnd"
+            android:textColor="@color/txtClr"/>
         <TextView
             android:id="@+id/resendBtn"
             android:layout_width="wrap_content"

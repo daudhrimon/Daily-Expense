@@ -15,7 +15,7 @@
             android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:cardElevation="5dp">
+            app:cardElevation="10dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -53,8 +53,8 @@
             android:id="@+id/frameLay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/top"
-            android:layout_above="@+id/navBtm"/>
+            android:layout_above="@+id/navBtm"
+            android:layout_below="@+id/top" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addEx"
@@ -62,12 +62,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="70dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="74dp"
             android:backgroundTint="@color/btnBg"
             android:onClick="addExOnClick"
             android:src="@drawable/add"
-            app:maxImageSize="65dp"
+            app:maxImageSize="55dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -75,8 +75,11 @@
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:layout_alignParentBottom="true"
+            app:elevation="10dp"
             app:menu="@menu/menu_navbtm"
-            android:background="@color/btnBg"/>
+            android:background="@color/btnBg"
+            app:itemRippleColor="@color/txtClr"
+            app:itemTextAppearanceActive="@style/Widget.Material3.BottomNavigationView"/>
 
     </RelativeLayout>
 

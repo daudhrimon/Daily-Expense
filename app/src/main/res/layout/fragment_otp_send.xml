@@ -30,6 +30,7 @@
         android:layout_marginEnd="10dp"
         android:text="@string/otpSendHdr"
         android:textAlignment="center"
+        android:textColor="@color/txtClr"
         android:textSize="30dp"
         android:textStyle="bold" />
 
@@ -42,7 +43,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:text="@string/otpSendMsg"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/txtClr"/>
 
 
     <LinearLayout

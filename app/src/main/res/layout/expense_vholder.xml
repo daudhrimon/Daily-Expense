@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="15dp"
-    android:elevation="5dp"
+    android:elevation="10dp"
     android:layout_margin="5dp">
 
     <LinearLayout
@@ -33,7 +33,7 @@
                     android:layout_margin="5dp"
                     android:gravity="top"
                     android:text="BIll Type"
-                    android:textColor="#06598F"
+                    android:textColor="@color/txtClr"
                     android:textSize="20dp" />
 
                 <TextView
@@ -74,7 +74,7 @@
                     android:drawablePadding="7dp"
                     android:textAlignment="center"
                     android:hint="0000"
-                    android:textColor="#000"
+                    android:textColor="@color/txtClr"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 

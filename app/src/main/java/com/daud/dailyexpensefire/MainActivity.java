@@ -1,14 +1,18 @@
 package com.daud.dailyexpensefire;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -16,9 +20,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -72,17 +79,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addExOnClick(View view) {
-        /*DatabaseReference dataRef = databaseRef.push();
-        String Key = dataRef.getKey().toString();
-        AuthActivity.editor.putString("Key",Key).commit();
-        HashMap<String,Object> hashMap = new HashMap<>();
-        hashMap.put("Type","");
-        hashMap.put("Amount",0);
-        hashMap.put("Note","");
-        hashMap.put("Date","");
-        hashMap.put("Time","");
-        hashMap.put("Doc","");
-        dataRef.setValue(hashMap);*/
         Intent intent = new Intent(MainActivity.this, AddExActivity.class);
         intent.putExtra("STATE","Add");
         startActivity(intent);
@@ -92,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.eName:
-                Toast.makeText(MainActivity.this, "Edit Name", Toast.LENGTH_SHORT).show();
+                editNameAlert();
                 break;
 
             case R.id.sOut:
-                Toast.makeText(MainActivity.this, "Sign Out", Toast.LENGTH_SHORT).show();
+                showSignOutAlert();
                 break;
 
             case R.id.dash:
@@ -113,6 +109,55 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void editNameAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        View view = LayoutInflater.from(this).inflate(R.layout.name_input_lay,null);
+        final TextInputEditText nameEt = view.findViewById(R.id.nameEt);
+        final MaterialButton saveBtn = view.findViewById(R.id.saveBtn);
+        builder.setView(view);
+        final Dialog dialog = builder.create();
+        dialog.show();
+
+        saveBtn.setOnClickListener(view1 -> {
+            if (nameEt.getText().toString().isEmpty()){
+                nameEt.setError("Empty");
+                nameEt.requestFocus();
+                return;
+            }
+            String name = nameEt.getText().toString();
+            editor.putString("Name",name);
+            nameTv.setText(name);
+            Toast.makeText(MainActivity.this, "Done", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+        });
+    }
+
+    private void showSignOutAlert() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+        dialog.setIcon(R.drawable.logout);
+        dialog.setTitle("SignOut Alert !");
+        dialog.setMessage("Are you sere, you want to SignOut ?");
+
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(MainActivity.this, "SignOut", Toast.LENGTH_SHORT).show();
+                MainActivity.editor.putInt("STATE", 0).commit();
+                startActivity(new Intent(MainActivity.this,AuthActivity.class));
+                finish();
+            }
+        });
+
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
     private void bottomNavItemSelect(MenuItem item) {
 
         switch (item.getItemId()){
@@ -126,6 +171,30 @@ public class MainActivity extends AppCompatActivity {
 
             default:break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+        dialog.setIcon(R.drawable.exit);
+        dialog.setTitle("Exit Alert !");
+        dialog.setMessage("Are you sere, you want to Exit ?");
+
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     private void initial() {
@@ -149,5 +218,4 @@ public class MainActivity extends AppCompatActivity {
         databaseRef = FirebaseDatabase.getInstance().getReference(Phone);
         databaseRef.keepSynced(true);
     }
-
 }

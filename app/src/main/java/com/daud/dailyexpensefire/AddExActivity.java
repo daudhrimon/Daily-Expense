@@ -148,7 +148,7 @@ public class AddExActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month+1;
-                        String Date = day+"/"+month+"/"+year;
+                        String Date = year+"/"+month+"/"+day;
                         exDate.setText(Date);
                     }
                 },year,month,day);
@@ -159,6 +159,7 @@ public class AddExActivity extends AppCompatActivity {
     }
 
     public void pickTime(View view) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View timeView = getLayoutInflater().inflate(R.layout.custom_timepicker,null);
         final TimePicker timePicker = timeView.findViewById(R.id.timepicker);

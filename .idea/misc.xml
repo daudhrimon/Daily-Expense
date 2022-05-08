@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/expand_less.xml" value="0.1135" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/expand_more.xml" value="0.1135" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1135" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_add_chart_24.xml" value="0.1135" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_arrow_circle_left_24.xml" value="0.1135" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.1135" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.1135" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_expand_less_24.xml" value="0.1135" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_expand_more_24.xml" value="0.1135" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.1605" />

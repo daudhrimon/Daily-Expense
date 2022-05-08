@@ -177,10 +177,10 @@ public class OtpVerifyFragment extends Fragment {
 
             if (Phone != null && !Phone.isEmpty()) {
 
-                AuthActivity.editor.putInt("STATE", 1);
-                AuthActivity.editor.putString("Name",nameEt.getText().toString());
-                AuthActivity.editor.putString("Phone",Phone);
-                AuthActivity.editor.commit();
+                SplashActivity.editor.putInt("STATE", 1);
+                SplashActivity.editor.putString("Name",nameEt.getText().toString());
+                SplashActivity.editor.putString("Phone",Phone);
+                SplashActivity.editor.commit();
 
                 dialog.dismiss();
 
@@ -284,6 +284,5 @@ public class OtpVerifyFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
         verifyProg = view.findViewById(R.id.verifyProg);
-        Phone = AuthActivity.sharedPreferences.getString("Phone", "");
     }
 }

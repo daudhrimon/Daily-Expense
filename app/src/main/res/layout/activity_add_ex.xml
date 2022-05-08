@@ -126,17 +126,18 @@
                 <ImageButton
                     android:id="@+id/exPopup"
                     style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="48dp"
+                    android:layout_width="30dp"
                     android:layout_height="48dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_alignParentEnd="true"
                     android:onClick="exPopupOnClick"
                     android:src="@drawable/ic_baseline_more_vert_24"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </RelativeLayout>
 
             <Button
-                android:id="@+id/exAdd"
+                android:id="@+id/exAddBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"

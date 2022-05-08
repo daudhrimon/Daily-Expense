@@ -39,7 +39,6 @@ import androidx.core.view.GravityCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
@@ -56,7 +55,7 @@ public class AddExActivity extends AppCompatActivity {
     private Spinner spinner;
     private String exType, imageUrl = "",STATE,KEY;
     private TextInputEditText exAmount,exDate,exTime;
-    private Button exAdd;
+    private Button exAddBtn;
     private ImageView exImage;
     private Uri imageUri = null;
     private RelativeLayout exImageLay;
@@ -88,7 +87,7 @@ public class AddExActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
 
-        exAdd.setOnClickListener(view -> {
+        exAddBtn.setOnClickListener(view -> {
             if (exAmount.getText().toString().isEmpty()){
                 exAmount.setError("Empty");
                 exAmount.requestFocus();
@@ -109,6 +108,7 @@ public class AddExActivity extends AppCompatActivity {
         Intent intent = getIntent();
         STATE = intent.getStringExtra("STATE");
         if (STATE.equals("UP")){
+            exAddBtn.setText("Update Expense");
             KEY = intent.getStringExtra("KEY");
             String TYPE = intent.getStringExtra("TYPE");
             String AMOUNT = intent.getStringExtra("AMOUNT");
@@ -184,16 +184,10 @@ public class AddExActivity extends AppCompatActivity {
     }
 
     public void addDocOnClick(View view) {
-        if (ActivityCompat.checkSelfPermission(AddExActivity.this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(AddExActivity.this,"Camera permission not Granted",Toast.LENGTH_SHORT).show();
-            ActivityCompat.requestPermissions(AddExActivity.this, new String[]{Manifest.permission.CAMERA}, 2);
-        }else{
-            if (checkInternet()){
-                imageSourceSelectorDialog();
-            }else{
-                Toast.makeText(this, "Check Internet Connection First", Toast.LENGTH_SHORT).show();
-            }
+        if (checkInternet()) {
+            imageSourceSelectorDialog();
+        } else {
+            Toast.makeText(this, "Check Internet Connection First", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -205,15 +199,28 @@ public class AddExActivity extends AppCompatActivity {
         ImageView gallery = view1.findViewById(R.id.gallery);
 
         camera.setOnClickListener(view2 -> {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this,"Camera permission not Granted",Toast.LENGTH_SHORT).show();
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+            }else{
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent,1);
             alertDialog.dismiss();
+            }
         });
 
         gallery.setOnClickListener(view2 -> {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this,"Files & Media permission not Granted",Toast.LENGTH_SHORT).show();
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
+                        ,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+            }else{
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT).setType("image/*");
             startActivityForResult(intent,2);
             alertDialog.dismiss();
+            }
         });
         alertDialog.setCancelable(false);
         alertDialog.show();
@@ -356,7 +363,7 @@ public class AddExActivity extends AppCompatActivity {
         exAmount = findViewById(R.id.exAmount);
         exDate = findViewById(R.id.exDate);
         exTime = findViewById(R.id.exTime);
-        exAdd = findViewById(R.id.exAdd);
+        exAddBtn = findViewById(R.id.exAddBtn);
         exImage = findViewById(R.id.exImage);
         exImageLay = findViewById(R.id.exImageLay);
         String Phone = MainActivity.sharedPreferences.getString("Phone", "");

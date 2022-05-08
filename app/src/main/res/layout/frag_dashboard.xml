@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"
         android:text="Year / Month / Day"
         android:textColor="@color/txtClr"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="5dp"/>
 
     <LinearLayout

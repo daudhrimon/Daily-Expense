@@ -61,6 +61,10 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ExpenseV
         holder.expandBtn.setOnClickListener(view -> {
             expandBtnOnClick(holder,position);
         });
+
+        holder.itemView.setOnClickListener(view -> {
+            popUpMenuOnClick(holder,position);
+        });
     }
 
     private void expandBtnOnClick(ExpenseViewHolder holder, int position) {

@@ -39,6 +39,7 @@ import androidx.core.view.GravityCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
@@ -192,11 +193,12 @@ public class AddExActivity extends AppCompatActivity {
     }
 
     private void imageSourceSelectorDialog() {
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        View view1 = LayoutInflater.from(this).inflate(R.layout.image_source_selector, null);
-        alertDialog.setView(view1);
-        ImageView camera = view1.findViewById(R.id.camera);
-        ImageView gallery = view1.findViewById(R.id.gallery);
+
+        BottomSheetDialog bottomSheet = new BottomSheetDialog(this);
+        bottomSheet.setContentView(R.layout.image_source_selector);
+
+        ImageView camera = bottomSheet.findViewById(R.id.camera);
+        ImageView gallery = bottomSheet.findViewById(R.id.gallery);
 
         camera.setOnClickListener(view2 -> {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -204,9 +206,9 @@ public class AddExActivity extends AppCompatActivity {
                 Toast.makeText(this,"Camera permission not Granted",Toast.LENGTH_SHORT).show();
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
             }else{
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent,1);
-            alertDialog.dismiss();
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,1);
+                bottomSheet.dismiss();
             }
         });
 
@@ -217,13 +219,13 @@ public class AddExActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
                         ,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
             }else{
-            Intent intent = new Intent(Intent.ACTION_GET_CONTENT).setType("image/*");
-            startActivityForResult(intent,2);
-            alertDialog.dismiss();
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT).setType("image/*");
+                startActivityForResult(intent,2);
+                bottomSheet.dismiss();
             }
         });
-        alertDialog.setCancelable(false);
-        alertDialog.show();
+
+        bottomSheet.show();
     }
 
     public void exPopupOnClick(View view) {

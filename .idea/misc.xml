@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable-v24/iv_selector.xml" value="0.109" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/expand_less.xml" value="0.1135" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/expand_more.xml" value="0.1135" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1135" />
@@ -31,7 +32,7 @@
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/fragment_dash_board.xml" value="0.25" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/fragment_otp_send.xml" value="0.2" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/fragment_otp_verify.xml" value="0.15185185185185185" />
-        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/image_source_selector.xml" value="0.25" />
+        <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/image_source_selector.xml" value="0.2" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/name_input_lay.xml" value="0.25" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/single_edittext_updater.xml" value="0.25" />
         <entry key="..\:/Users/Daud Hoshen Rimon/AndroidStudioProjects/DailyExpense/app/src/main/res/layout/tool_bar.xml" value="0.25" />
